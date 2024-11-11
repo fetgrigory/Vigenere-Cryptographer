@@ -33,7 +33,7 @@
      ```bash
      source venv/bin/activate
      ```
-3. Запустите бота командой:
+3. Запустите программу командой:
    ```bash
    python main.py
    ```
