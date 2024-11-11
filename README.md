@@ -16,4 +16,25 @@
 Расшифрование текста:<br />
 ![1](https://user-images.githubusercontent.com/103204349/232480328-9c4c6e43-6f97-443a-b366-233e8f22ae94.jpg)<br />
 # Использование
+### Подготовка виртуального окружения и запуск программы
+
+1. Создайте виртуальное окружение для изоляции зависимостей проекта. 
+   Используйте команду:
+   ```bash
+   python -m venv venv
+   ```
+
+2. Активируйте виртуальное окружение:
+   - На Windows:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - На macOS и Linux:
+     ```bash
+     source venv/bin/activate
+     ```
+3. Запустите бота командой:
+   ```bash
+   python main.py
+   ```
 Для запуска программы необходимо перейти в папку «Vigenere-Cryptographer»->«dist» и выбрать файл «Vigenere-Cryptographer.exe»
