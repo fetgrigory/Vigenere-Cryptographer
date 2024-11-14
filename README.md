@@ -18,9 +18,9 @@ VigenereCipher: Этот класс реализует алгоритм шифр
 VigenereApp: Этот класс объединяет и автоматизирует взаимодействие между AppGUI и VigenereCipher. Он наследует от обоих классов, чтобы предложить пользователю возможность шифровать и дешифровать текст через основной интерфейс, используя заданный ключ.<br />
 # Работа программы #
 Шифрование текста:<br />
-![0](https://user-images.githubusercontent.com/103204349/232480064-86d7c96f-e49a-41c7-b0b7-0346953aaf78.jpg)<br />
+![1](https://github.com/user-attachments/assets/f4c640cc-da56-474f-a614-bbd20fc5b4f4)<br />
 Расшифрование текста:<br />
-![1](https://user-images.githubusercontent.com/103204349/232480328-9c4c6e43-6f97-443a-b366-233e8f22ae94.jpg)<br />
+![2](https://github.com/user-attachments/assets/44355a02-5c2e-46d7-a99d-8f251d9bfb16)<br />
 # Использование
 ### Подготовка виртуального окружения и запуск программы
 
