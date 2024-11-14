@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, Entry, Button, Menu, LEFT, W, END
+from tkinter import Tk, Label, Entry, Button, Menu, END
 from tkinter import messagebox as mb
 
 
@@ -18,11 +18,13 @@ class VigenereCipher:
         Returns:
             [type]: [description]
         """
-        # Encrypts the input text using the Vigenère cipher
+        # Encrypts the input text using the Vigenere cipher
         result = ""
-        key_length = len(self.key)  # The length of the cipher key
+        # The length of the cipher key
+        key_length = len(self.key)
         for i, char in enumerate(text):
-            if char.isalpha():  # Process only alphabetic characters
+            # Process only alphabetic characters
+            if char.isalpha():
                 # Calculate the shift based on the corresponding key character
                 shift = ord(self.key[i % key_length].lower()) - ord('а')
                 if char.islower():
@@ -31,10 +33,10 @@ class VigenereCipher:
                 else:
                     # Encrypt uppercase letters
                     new_char = chr((ord(char) - ord('А') + shift) % 32 + ord('А'))
-                result += new_char  # Append encrypted character to the result
+                result += new_char
             else:
-                result += char  # Append non-alphabetic characters unchanged
-        return result  # Return the encrypted text
+                result += char
+        return result
 
     def decrypt(self, text):
         """AI is creating summary for decrypt
@@ -47,9 +49,11 @@ class VigenereCipher:
         """
         # Decrypts the input text using the Vigenère cipher
         result = ""
-        key_length = len(self.key)  # The length of the cipher key
+        # The length of the cipher key
+        key_length = len(self.key)
         for i, char in enumerate(text):
-            if char.isalpha():  # Process only alphabetic characters
+            # Process only alphabetic characters
+            if char.isalpha():
                 # Calculate the shift based on the corresponding key character
                 shift = ord(self.key[i % key_length].lower()) - ord('а')
                 if char.islower():
@@ -65,15 +69,19 @@ class VigenereCipher:
 
 
 class AppGUI:
+    """AI is creating summary for
+    """
     def __init__(self, root):
         # Initialize the GUI components
         self.root = root
         self.text_entry = None
         self.shift_entry = None
         self.result_entry = None
-        self.setup_gui()  # Set up the user interface
+        self.setup_gui()
 
     def setup_gui(self):
+        """AI is creating summary for setup_gui
+        """
         # Configure the main GUI window
         self.root.title("Шифр Виженера")
         self.root.geometry("600x500")
@@ -121,7 +129,6 @@ class AppGUI:
         )
         decrypt_button.pack(pady=10)
 
-        # Add a label for showing the result
         result_label = Label(
             self.root,
             text="Результат:",
@@ -129,15 +136,17 @@ class AppGUI:
             bg="#008000",
             fg="black"
         )
-        result_label.pack(pady=10)  # Add padding around the label
+        result_label.pack(pady=10)
 
         # Create an entry widget to display the encryption/decryption result
         self.result_entry = Entry(self.root, font="Arial 14", width=40)
         self.result_entry.pack(pady=10)
 
-        self.setup_menu()  # Set up the application menu
+        self.setup_menu()
 
     def setup_menu(self):
+        """AI is creating summary for setup_menu
+        """
         # Configure the menu for the application window
         main_menu = Menu(self.root)
         about_menu = Menu(main_menu, tearoff=0)
@@ -146,42 +155,54 @@ class AppGUI:
         self.root.config(menu=main_menu)
 
     def show_info(self):
+        """AI is creating summary for show_info
+        """
         mb.showinfo("О программе", "Феткулин Григорий - Шифр Виженера, 2023")
 
 
 class VigenereApp(AppGUI, VigenereCipher):
+    """AI is creating summary for VigenereApp
+
+    Args:
+        AppGUI ([type]): [description]
+        VigenereCipher ([type]): [description]
+    """
     # Combine GUI and Cipher functionalities in a single application
     def __init__(self, root):
-        AppGUI.__init__(self, root)  # Initialize the GUI part
-        VigenereCipher.__init__(self, key="")  # Initialize the cipher with an empty key
+        AppGUI.__init__(self, root)
+        VigenereCipher.__init__(self, key="")
 
     def vigenere_encrypt_text(self):
+        """AI is creating summary for vigenere_encrypt_text
+        """
         # Encrypt the text entered in the GUI
-        text = self.text_entry.get()  # Get the input text
-        self.key = self.shift_entry.get()  # Get the cipher key
-
-        if not text or not self.key:
-            # Show error if text or key is not provided
-            mb.showerror("Ошибка", "Введите текст и ключ шифрования")
-            return
-
-        result = self.encrypt(text)  # Encrypt the text
-        self.result_entry.delete(0, END)  # Clear the result entry field
-        self.result_entry.insert(0, result)  # Insert the encrypted result
-
-    def vigenere_decrypt_text(self):
-        # Decrypt the text entered in the GUI
-        text = self.text_entry.get() 
+        text = self.text_entry.get()
         self.key = self.shift_entry.get()
 
         if not text or not self.key:
             # Show error if text or key is not provided
             mb.showerror("Ошибка", "Введите текст и ключ шифрования")
             return
+        # Encrypt the text
+        result = self.encrypt(text)
+        self.result_entry.delete(0, END)
+        self.result_entry.insert(0, result)
 
-        result = self.decrypt(text)  # Decrypt the text
-        self.result_entry.delete(0, END)  # Clear the result entry field
-        self.result_entry.insert(0, result)  # Insert the decrypted result
+    def vigenere_decrypt_text(self):
+        """AI is creating summary for vigenere_decrypt_text
+        """
+        # Decrypt the text entered in the GUI
+        text = self.text_entry.get()
+        self.key = self.shift_entry.get()
+
+        if not text or not self.key:
+            # Show error if text or key is not provided
+            mb.showerror("Ошибка", "Введите текст и ключ шифрования")
+            return
+            # Decrypt the text
+        result = self.decrypt(text)
+        self.result_entry.delete(0, END)
+        self.result_entry.insert(0, result)
 
 
 if __name__ == "__main__":
